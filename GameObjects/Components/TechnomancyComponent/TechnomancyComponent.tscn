@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bti4ao0b8d5xb"]
+
+[ext_resource type="Script" uid="uid://ehdbxtbocclm" path="res://GameObjects/Components/TechnomancyComponent/TechnomancyComponent.cs" id="1_5agsh"]
+
+[node name="TechnomancyComponent" type="Node"]
+script = ExtResource("1_5agsh")
