@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://chynjlylxfyal"]
+
+[ext_resource type="PackedScene" uid="uid://dme5pcecpo1w2" path="res://Components/HitboxComponent/HitboxComponent.tscn" id="1_mb6oy"]
+[ext_resource type="Script" uid="uid://cnr2yytydkl30" path="res://GameObjects/Characters/Player/PlayerController.cs" id="1_xj1dj"]
+[ext_resource type="PackedScene" uid="uid://bs0w2mdpmg3gw" path="res://Components/HealthComponent/HealthComponent.tscn" id="2_cor2b"]
+[ext_resource type="PackedScene" uid="uid://fcsgf1anamqc" path="res://Components/MeshComponent/MeshComponent.tscn" id="3_cor2b"]
+[ext_resource type="PackedScene" uid="uid://d1q1p3kvte1rg" path="res://Components/AttackComponent/AttackComponent.tscn" id="5_s6yla"]
+[ext_resource type="PackedScene" uid="uid://bti4ao0b8d5xb" path="res://Components/TechnomancyComponent/TechnomancyComponent.tscn" id="6_sti0f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cor2b"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i61jv"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "CameraPivot")]
+collision_mask = 14
+script = ExtResource("1_xj1dj")
+Camera = NodePath("CameraPivot/Camera3D")
+CameraPivot = NodePath("CameraPivot")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_cor2b")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("1_mb6oy")]
+shape = SubResource("CapsuleShape3D_cor2b")
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="MeshComponent" parent="." instance=ExtResource("3_cor2b")]
+mesh = SubResource("CapsuleMesh_i61jv")
+
+[node name="WeaponComponent" parent="." instance=ExtResource("5_s6yla")]
+
+[node name="TechnomancyComponent" parent="." instance=ExtResource("6_sti0f")]
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]

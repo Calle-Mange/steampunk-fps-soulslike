@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://fcsgf1anamqc"]
+
+[node name="MeshComponent" type="MeshInstance3D"]

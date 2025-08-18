@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4fl5lxw2j3bg"]
+
+[ext_resource type="PackedScene" uid="uid://fcsgf1anamqc" path="res://Components/MeshComponent/MeshComponent.tscn" id="1_m1e03"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_15ans"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3jnpo"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="TestFloor" type="Node3D"]
+
+[node name="TestFloorBody" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_layer = 8
+collision_mask = 7
+
+[node name="MeshComponent" parent="TestFloorBody" instance=ExtResource("1_m1e03")]
+mesh = SubResource("PlaneMesh_15ans")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestFloorBody"]
+shape = SubResource("ConcavePolygonShape3D_3jnpo")
