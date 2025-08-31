@@ -1,19 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://chynjlylxfyal"]
+[gd_scene load_steps=9 format=3 uid="uid://chynjlylxfyal"]
 
 [ext_resource type="PackedScene" uid="uid://dme5pcecpo1w2" path="res://Components/HitboxComponent/HitboxComponent.tscn" id="1_mb6oy"]
 [ext_resource type="Script" uid="uid://cnr2yytydkl30" path="res://GameObjects/Characters/Player/PlayerController.cs" id="1_xj1dj"]
 [ext_resource type="PackedScene" uid="uid://bs0w2mdpmg3gw" path="res://Components/HealthComponent/HealthComponent.tscn" id="2_cor2b"]
 [ext_resource type="PackedScene" uid="uid://d1q1p3kvte1rg" path="res://Components/AttackComponent/AttackComponent.tscn" id="5_s6yla"]
+[ext_resource type="PackedScene" uid="uid://6yituo737fmm" path="res://Components/AnimationComponent/AnimationComponent.tscn" id="6_s6yla"]
 [ext_resource type="PackedScene" uid="uid://bti4ao0b8d5xb" path="res://Components/TechnomancyComponent/TechnomancyComponent.tscn" id="6_sti0f"]
-[ext_resource type="PackedScene" uid="uid://bas47pyc5idno" path="res://Assets/Models/player/arm_rig_prop.glb" id="6_xj1dj"]
+[ext_resource type="PackedScene" uid="uid://5ega0qrnv6fa" path="res://Assets/Models/player/arm_rig_prop.glb" id="6_xj1dj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cor2b"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "CameraPivot")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("Camera", "CameraPivot", "AnimationComponent", "ModelComponent")]
 collision_mask = 14
 script = ExtResource("1_xj1dj")
 Camera = NodePath("CameraPivot/Camera3D")
 CameraPivot = NodePath("CameraPivot")
+AnimationComponent = NodePath("AnimationComponent")
+ModelComponent = NodePath("CameraPivot/PlayerModel")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_cor2b")]
 
@@ -25,12 +28,24 @@ HealthComponent = NodePath("../HealthComponent")
 
 [node name="TechnomancyComponent" parent="." instance=ExtResource("6_sti0f")]
 
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("AnimationPlayer") instance=ExtResource("6_s6yla")]
+AnimationPlayer = NodePath("../CameraPivot/PlayerModel/AnimationPlayer")
+
 [node name="CameraPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0568, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735246, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 
-[node name="Model" parent="CameraPivot" instance=ExtResource("6_xj1dj")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.0568, 0)
+[node name="PlayerModel" parent="CameraPivot" instance=ExtResource("6_xj1dj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.735246, 0)
 
-[editable path="CameraPivot/Model"]
+[node name="Skeleton3D" parent="CameraPivot/PlayerModel/metarig" index="0"]
+bones/2/rotation = Quaternion(-0.117038, 0.653503, -0.495443, 0.560154)
+bones/3/rotation = Quaternion(0.0762121, 0.0445339, -0.0128682, 0.996013)
+bones/4/rotation = Quaternion(0.0783801, -0.375825, 0.0080909, 0.923334)
+bones/5/rotation = Quaternion(0.19589, 0.885063, 0.095121, -0.411391)
+bones/13/rotation = Quaternion(-0.117038, -0.653503, 0.495443, 0.560154)
+bones/14/rotation = Quaternion(0.0762121, -0.0445339, 0.0128682, 0.996013)
+bones/19/rotation = Quaternion(-0.025156, 0.945953, -0.0338936, -0.321546)
+
+[editable path="CameraPivot/PlayerModel"]

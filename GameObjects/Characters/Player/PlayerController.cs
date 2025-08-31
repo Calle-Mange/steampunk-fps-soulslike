@@ -13,10 +13,15 @@ public partial class PlayerController : CharacterBody3D
     [Export] private float JumpSpeed = 4.5f;
     [Export] private float Gravity = 9.8f;
 
+    [ExportSubgroup("Components")]
+    [Export] private AnimationComponent AnimationComponent;
+    [Export] private Node3D ModelComponent;
+
 
     public override void _Ready()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        AnimationComponent.PlayAniamtion("player_rig_idle");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -46,6 +51,7 @@ public partial class PlayerController : CharacterBody3D
         {
             velocity.X = direction.X * Speed;
             velocity.Z = direction.Z * Speed;
+            AnimationComponent.PlayAniamtion("player_rig_walk");
         }
         else
         {
