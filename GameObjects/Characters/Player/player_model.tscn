@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://fj8d68xfhmwf"]
+
+[ext_resource type="PackedScene" uid="uid://5ega0qrnv6fa" path="res://Assets/Models/player/arm_rig_prop.glb" id="1_x7sev"]
+[ext_resource type="PackedScene" uid="uid://dc2stgpk6ytvd" path="res://GameObjects/Characters/Player/Weapons/SwordAndShield/sword_prop.tscn" id="2_8jfdf"]
+
+[node name="PlayerModel" instance=ExtResource("1_x7sev")]
+
+[node name="Skeleton3D" parent="Player Rig" index="0"]
+bones/2/rotation = Quaternion(-0.117038, 0.653503, -0.495443, 0.560154)
+bones/3/rotation = Quaternion(0.0762121, 0.0445339, -0.0128682, 0.996013)
+bones/4/rotation = Quaternion(0.0783801, -0.375825, 0.0080909, 0.923334)
+bones/5/rotation = Quaternion(0.19589, 0.885063, 0.095121, -0.411391)
+bones/13/rotation = Quaternion(-0.117038, -0.653503, 0.495443, 0.560154)
+bones/14/rotation = Quaternion(0.0762121, -0.0445339, 0.0128682, 0.996013)
+bones/15/rotation = Quaternion(0.0688561, 0.371471, -0.00987563, 0.925835)
+bones/19/rotation = Quaternion(-0.025156, 0.945953, -0.0338936, -0.321546)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Player Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.715128, -0.611569, -0.338489, 0.289714, -0.70003, 0.652705, -0.636127, 0.368703, 0.677791, -0.932721, 0.728157, 0.145373)
+bone_name = "hand.R"
+bone_idx = 15
+
+[node name="sword_prop" parent="Player Rig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("2_8jfdf")]
+transform = Transform3D(-0.751105, -0.651104, 0.109125, 0.0138335, 0.149737, 0.988631, -0.660039, 0.744074, -0.103461, -0.424253, 0.324556, 0.45032)

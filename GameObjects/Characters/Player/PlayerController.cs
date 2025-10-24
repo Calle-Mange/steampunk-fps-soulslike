@@ -17,7 +17,6 @@ public partial class PlayerController : CharacterBody3D
     [Export] private AnimationComponent AnimationComponent;
     [Export] private Node3D ModelComponent;
 
-
     public override void _Ready()
     {
         Input.MouseMode = Input.MouseModeEnum.Captured;
@@ -72,6 +71,7 @@ public partial class PlayerController : CharacterBody3D
             Vector3 cameraRotation = Camera.Rotation;
             cameraRotation.X = Mathf.Clamp(cameraRotation.X, -80f, 80f);
             Camera.Rotation = cameraRotation;
+
         }
 
         if (@event is InputEventKey keyEvent && keyEvent.IsPressed() && keyEvent.Keycode == Key.Escape)
