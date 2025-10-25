@@ -38,4 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735246, 0)
 [node name="PlayerModel" parent="CameraPivot/Camera3D" instance=ExtResource("7_s6yla")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.769506, 0)
 
+[node name="BoneAttachment3D" parent="CameraPivot/Camera3D/PlayerModel/Player Rig/Skeleton3D" index="0"]
+transform = Transform3D(-0.715128, -0.611569, -0.338489, 0.289715, -0.70003, 0.652705, -0.636127, 0.368702, 0.677791, -0.932722, 0.728157, 0.145372)
+
 [editable path="CameraPivot/Camera3D/PlayerModel"]
